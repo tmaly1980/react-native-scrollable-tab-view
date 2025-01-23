@@ -1,6 +1,6 @@
 const React = require('react');
-const { Component } = React;
-const { ViewPropTypes } = ReactNative = require('react-native');
+const ReactNative = require('react-native');
+const DeprecatedPropTypes = require('deprecated-react-native-prop-types');
 const createReactClass = require('create-react-class');
 const PropTypes = require('prop-types');
 const {
@@ -40,12 +40,12 @@ const ScrollableTabView = createReactClass({
     onChangeTab: PropTypes.func,
     onScroll: PropTypes.func,
     renderTabBar: PropTypes.any,
-    tabBarUnderlineStyle: ViewPropTypes.style,
+    tabBarUnderlineStyle: DeprecatedPropTypes.ViewPropTypes.style,
     tabBarBackgroundColor: PropTypes.string,
     tabBarActiveTextColor: PropTypes.string,
     tabBarInactiveTextColor: PropTypes.string,
     tabBarTextStyle: PropTypes.object,
-    style: ViewPropTypes.style,
+    style: DeprecatedPropTypes.ViewPropTypes.style,
     contentProps: PropTypes.object,
     scrollWithoutAnimation: PropTypes.bool,
     locked: PropTypes.bool,
@@ -73,7 +73,7 @@ const ScrollableTabView = createReactClass({
     let positionAndroid;
     let offsetAndroid;
 
-    if (true) {
+    if (Platform.OS === 'ios') {
       scrollXIOS = new Animated.Value(this.props.initialPage * containerWidth);
       const containerWidthAnimatedValue = new Animated.Value(containerWidth);
       // Need to call __makeNative manually to avoid a native animated bug. See
@@ -134,7 +134,7 @@ const ScrollableTabView = createReactClass({
   },
 
   goToPage(pageNumber) {
-    if (true) {
+    if (Platform.OS === 'ios') {
       const offset = pageNumber * this.state.containerWidth;
       if (this.scrollView) {
         this.scrollView.scrollTo({x: offset, y: 0, animated: !this.props.scrollWithoutAnimation, });
@@ -224,7 +224,7 @@ const ScrollableTabView = createReactClass({
   },
 
   renderScrollableContent() {
-    if (true) {
+    if (Platform.OS === 'ios') {
       const scenes = this._composeScenes();
       return <Animated.ScrollView
         horizontal
@@ -322,7 +322,7 @@ const ScrollableTabView = createReactClass({
   },
 
   _onScroll(e) {
-    if (true) {
+    if (Platform.OS === 'ios') {
       const offsetX = e.nativeEvent.contentOffset.x;
       if (offsetX === 0 && !this.scrollOnMountCalled) {
         this.scrollOnMountCalled = true;
@@ -342,7 +342,7 @@ const ScrollableTabView = createReactClass({
       return;
     }
     
-    if (true) {
+    if (Platform.OS === 'ios') {
       const containerWidthAnimatedValue = new Animated.Value(width);
       // Need to call __makeNative manually to avoid a native animated bug. See
       // https://github.com/facebook/react-native/pull/14435
