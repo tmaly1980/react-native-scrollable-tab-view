@@ -125,7 +125,7 @@ const ScrollableTabView = createReactClass({
   },
 
   componentWillUnmount() {
-    if (true) {
+    if (Platform.OS === 'ios') {
       this.state.scrollXIOS.removeAllListeners();
     } else {
       this.state.positionAndroid.removeAllListeners();
