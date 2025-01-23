@@ -13,7 +13,7 @@ const {
   InteractionManager,
 } = ReactNative;
 
-const ViewPagerAndroid = require('react-native-pager-view').default
+import ViewPagerAndroid from 'react-native-pager-view';
 const TimerMixin = require('react-timer-mixin');
 
 const SceneComponent = require('./SceneComponent');
