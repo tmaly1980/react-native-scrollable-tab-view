@@ -1,5 +1,4 @@
 const React = require('react');
-const { ViewPropTypes } = ReactNative = require('react-native');
 const ReactNative = require('react-native');
 const DeprecatedPropTypes = require('deprecated-react-native-prop-types');
 const PropTypes = require('prop-types');
